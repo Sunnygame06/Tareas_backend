@@ -59,7 +59,7 @@ studentController.updateStudents = async (req, res) => {
 
 studentController.deleteStudent = async(req, res) => {
     try{
-        const deletedStudent = studentModel.findByIdAndDelete(req.params.id);
+        const deletedStudent = await studentModel.findByIdAndDelete(req.params.id);
 
         if(!deletedStudent){
             return res.status(404).json({message: "No se encontro"}) 

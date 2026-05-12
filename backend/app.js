@@ -4,6 +4,7 @@ import studentRoutes from "./src/routes/student.js"
 import loginStudentRoutes from "./src/routes/loginStudent.js"
 import recoveryPasswordStudentRoutes from "./src/routes/recoveryPasswordStudent.js"
 import homeworkRoutes from "./src/routes/homework.js"
+import categoryRoutes from "./src/routes/category.js"
 import cors from "cors"
 import cookieParser from "cookie-parser";
 
@@ -23,5 +24,6 @@ app.use("/api/student", studentRoutes);
 app.use("/api/loginStudent", loginStudentRoutes);
 app.use("/api/recoveryPassStudent", recoveryPasswordStudentRoutes)
 app.use("/api/homework", homeworkRoutes);
+app.use("/api/category", categoryRoutes);
 
 export default app;
