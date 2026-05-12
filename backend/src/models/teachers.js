@@ -1,6 +1,6 @@
 /*
     name,
-    lasName,
+    lastName,
     email,
     password,
     phone,

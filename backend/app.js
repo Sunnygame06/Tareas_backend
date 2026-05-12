@@ -5,6 +5,11 @@ import loginStudentRoutes from "./src/routes/loginStudent.js"
 import recoveryPasswordStudentRoutes from "./src/routes/recoveryPasswordStudent.js"
 import homeworkRoutes from "./src/routes/homework.js"
 import categoryRoutes from "./src/routes/category.js"
+import registerTeacherRoutes from "./src/routes/registerTeacher.js"
+import teacherRoutes from "./src/routes/teacher.js"
+import recoveryPasswordTeacherRoutes from "./src/routes/recoveryPasswordTeacher.js"
+import loginTeacherRoutes from "./src/routes/loginTeacher.js"
+import subjectRoutes from "./src/routes/subject.js"
 import cors from "cors"
 import cookieParser from "cookie-parser";
 
@@ -25,5 +30,10 @@ app.use("/api/loginStudent", loginStudentRoutes);
 app.use("/api/recoveryPassStudent", recoveryPasswordStudentRoutes)
 app.use("/api/homework", homeworkRoutes);
 app.use("/api/category", categoryRoutes);
+app.use("/api/registerTeacher", registerTeacherRoutes);
+app.use("/api/teacher", teacherRoutes);
+app.use("/api/recoveryPassTeacher", recoveryPasswordTeacherRoutes);
+app.use("/api/loginTeacher", loginTeacherRoutes);
+app.use("/api/subject", subjectRoutes);
 
 export default app;

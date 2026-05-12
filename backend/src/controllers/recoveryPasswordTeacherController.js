@@ -5,24 +5,24 @@ import nodemailer from "nodemailer";
 
 import {config} from "../../config.js";
 
-import studentModel from "../models/students.js";
+import teacherModel from "../models/teachers.js";
 
-const recoveryPasswordStudentController = {};
+const recoveryPasswordTeacherController = {};
 
-recoveryPasswordStudentController.rquestCode = async(req, res) => {
+recoveryPasswordTeacherController.rquestCode = async(req, res) => {
     try{
         const {email} = req.body;
 
-        const studentFound = await studentModel.findOne({email});
+        const teacherFound = await teacherModel.findOne({email});
 
-        if(!studentFound){
+        if(!teacherFound){
             return res.status(404).json({message: "No se encontro"})
         }
 
         const randomCode = crypto.randomBytes(3).toString("hex")
 
         const token = jsonwebtoken.sign(
-            {email, randomCode, userType: "student", verified: false},
+            {email, randomCode, userType: "teacher", verified: false},
             config.JWT.secret,
             {expiresIn: "15m"}
         )
@@ -57,7 +57,7 @@ recoveryPasswordStudentController.rquestCode = async(req, res) => {
     }
 };
 
-recoveryPasswordStudentController.verifyCode = async(req, res) => {
+recoveryPasswordTeacherController.verifyCode = async(req, res) => {
     try{
         const {code} = req.body;
 
@@ -83,7 +83,7 @@ recoveryPasswordStudentController.verifyCode = async(req, res) => {
     }
 };
 
-recoveryPasswordStudentController.newPassword = async(req, res) => {
+recoveryPasswordTeacherController.newPassword = async(req, res) => {
     try{
         const {newPassword, confirmNewPassword} = req.body;
 
@@ -100,7 +100,7 @@ recoveryPasswordStudentController.newPassword = async(req, res) => {
 
         const passwordHash = await bcrypt.hash(newPassword, 10)
 
-        await studentModel.findOneAndUpdate(
+        await teacherModel.findOneAndUpdate(
             {email: decoded.email},
             {password: passwordHash},
             {new: true},
@@ -114,4 +114,4 @@ recoveryPasswordStudentController.newPassword = async(req, res) => {
     }
 };
 
-export default recoveryPasswordStudentController;
+export default recoveryPasswordTeacherController;

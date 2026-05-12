@@ -90,7 +90,7 @@ registerTeacherController.verifyCode = async(req, res) => {
 
         const {
             randomCode: storedCode,
-           name,
+            name,
             lasName,
             email,
             password,
@@ -119,15 +119,15 @@ registerTeacherController.verifyCode = async(req, res) => {
             timeOut
         })
 
-        await newStudent.save();
+        await newTeacher.save();
 
         res.clearCookie("registrationCookie")
         
-        return res.status(200).json({message: "Estudiante agregado"})
+        return res.status(200).json({message: "Maestro agregado"})
     }catch (error){
         console.log("error"+error)
         return res.status(500).json({message: "Internal Server Error"}) 
     }
 }
 
-export default registerStudentController;
+export default registerTeacherController;
