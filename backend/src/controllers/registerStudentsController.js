@@ -120,5 +120,14 @@ registerStudentController.verifyCode = async(req, res) => {
         })
 
         await newStudent.save();
+
+        res.clearCookie("registrationCookie")
+        
+        return res.status(200).json({message: "Estudiante agregado"})
+    }catch (error){
+        console.log("error"+error)
+        return res.status(500).json({message: "Internal Server Error"}) 
     }
 }
+
+export default registerStudentController;

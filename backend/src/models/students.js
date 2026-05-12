@@ -24,7 +24,7 @@ const studentSchema = new Schema({
     grade: {type: String},
     isVerified: {type: Boolean},
     loginAttempts: {type: Number},
-    tiemOut: {type: Date}
+    timeOut: {type: Date}
 },{
     timestamps: true,
     strict: false
