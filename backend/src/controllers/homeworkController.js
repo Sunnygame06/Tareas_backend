@@ -50,7 +50,7 @@ homeworkController.updateHomework = async (req, res) => {
             return res.status(400).json({message: "Faltan campos"})
         }
 
-        if(title.length<10 || title.length>20){
+        if(title.length<5 || title.length>20){
             return res.status(400).json({message: "Titulo mal escrito"})
         }
 
